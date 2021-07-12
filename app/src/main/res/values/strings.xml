@@ -6,4 +6,8 @@
     <string name="favourite">favourite</string>
     <string name="settings">settings</string>
     <string name="search">Search</string>
+    <string name="todayButtonText">Today POD</string>
+    <string name="yesterdayButtonText">Yesterday POD</string>
+    <string name="beforeYesterdayButtonText">Yesterday-1 POD</string>
+    <string name="date_of_POD">date of POD</string>
 </resources>
