@@ -10,4 +10,8 @@
     <string name="yesterdayButtonText">Yesterday POD</string>
     <string name="beforeYesterdayButtonText">Yesterday-1 POD</string>
     <string name="date_of_POD">date of POD</string>
+    <string name="choose_theme">Choose theme</string>
+    <string name="mars_theme">Mars</string>
+    <string name="moon_theme">Moon</string>
+    <string name="cosmos_theme">Cosmos</string>
 </resources>

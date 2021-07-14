@@ -1,4 +1,4 @@
-package com.example.mypod
+package com.example.mypod.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

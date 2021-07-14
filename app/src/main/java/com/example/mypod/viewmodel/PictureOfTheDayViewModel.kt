@@ -1,8 +1,12 @@
-package com.example.mypod
+package com.example.mypod.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mypod.BuildConfig
+import com.example.mypod.model.PODRetrofitImpl
+import com.example.mypod.model.PODServerResponseData
+import com.example.mypod.model.PictureOfTheDayData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

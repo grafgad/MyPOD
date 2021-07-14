@@ -1,27 +1,23 @@
-package com.example.mypod
+package com.example.mypod.view
 
 import android.content.Intent
-import android.content.res.Resources
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColor
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
+import com.example.mypod.model.PictureOfTheDayData
+import com.example.mypod.viewmodel.PictureOfTheDayViewModel
+import com.example.mypod.R
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.main_fragment.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import com.example.mypod.PODServerResponseData as PODServerResponseData
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -146,7 +142,7 @@ class PictureOfTheDayFragment : Fragment() {
             show()
 
         }
-        Snackbar.make(today,"235", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(today,"235", Snackbar.LENGTH_SHORT).show() //срабатывает на любое нажатие
     }
 
     companion object {
