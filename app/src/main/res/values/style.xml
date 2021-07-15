@@ -8,6 +8,32 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MarsTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:textColor">@color/red</item>
+        <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
+        <item name="chipBackgroundColor">@color/orange</item>
+<!--        <item name="boxBackgroundColor">@color/orange</item>-->
+    </style>
+
+    <style name="MoonTHeme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:textColor">@color/gray</item>
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+        <item name="chipBackgroundColor">@color/purple_200</item>
+        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
+    </style>
+
+    <style name="CosmosTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="chipBackgroundColor">@color/accent</item>
+    </style>
+
+
+
     <style name="IndigoTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
 <!--        замена цвета-->

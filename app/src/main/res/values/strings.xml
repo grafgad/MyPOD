@@ -14,4 +14,5 @@
     <string name="mars_theme">Mars</string>
     <string name="moon_theme">Moon</string>
     <string name="cosmos_theme">Cosmos</string>
+    <string name="default_theme">default_theme</string>
 </resources>
