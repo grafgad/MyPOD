@@ -7,6 +7,20 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="MoonTHeme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="MarsTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="CosmosTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textColor">@color/purple_700</item>
+    </style>
+
+
+
 
     <style name="MarsTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:textColor">@color/red</item>
