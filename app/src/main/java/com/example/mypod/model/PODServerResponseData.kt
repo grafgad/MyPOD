@@ -1,4 +1,4 @@
-package com.example.mypod
+package com.example.mypod.model
 
 import com.google.gson.annotations.SerializedName
 
