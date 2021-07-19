@@ -13,6 +13,7 @@ import coil.api.load
 import com.example.mypod.model.PictureOfTheDayData
 import com.example.mypod.viewmodel.PictureOfTheDayViewModel
 import com.example.mypod.R
+import com.example.mypod.api.ApiActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
@@ -65,6 +66,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.app_bar_api -> activity?.let {startActivity(Intent(it,ApiActivity::class.java))}
             R.id.app_bar_fav -> toast("Favourite")
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, SettingsFragment())?.addToBackStack(null)?.commit()
             android.R.id.home -> {
@@ -132,8 +134,6 @@ class PictureOfTheDayFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-
-
     }
 
     private fun Fragment.toast(string: String?) {
