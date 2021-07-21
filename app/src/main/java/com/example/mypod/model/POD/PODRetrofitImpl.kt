@@ -1,4 +1,4 @@
-package com.example.mypod.model
+package com.example.mypod.model.POD
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor

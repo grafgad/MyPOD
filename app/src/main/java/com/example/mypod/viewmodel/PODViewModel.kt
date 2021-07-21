@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mypod.BuildConfig
-import com.example.mypod.model.PODRetrofitImpl
-import com.example.mypod.model.PODServerResponseData
-import com.example.mypod.model.PictureOfTheDayData
+import com.example.mypod.model.POD.PODRetrofitImpl
+import com.example.mypod.model.POD.PODServerResponseData
+import com.example.mypod.model.POD.PictureOfTheDayData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PictureOfTheDayViewModel(
+class PODViewModel(
     private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
     private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
 ) :

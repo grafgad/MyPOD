@@ -1,4 +1,4 @@
-package com.example.mypod.model
+package com.example.mypod.model.mars
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
@@ -8,17 +8,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class EarthRetrofitImpl {
+class MarsRetrofitImpl {
 
     private val baseUrl = "https://api.nasa.gov/"
 
-    fun getEarthRetrofitImpl(): EarthAPI {
-        val earthRetrofit = Retrofit.Builder()
+    fun getMarsRetrofitImpl(): MarsAPI {
+        val marsRetrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .client(createOkHttpClient(EarthInterceptor()))
+            .client(createOkHttpClient(MarsInterceptor()))
             .build()
-        return earthRetrofit.create(EarthAPI::class.java)
+        return marsRetrofit.create(MarsAPI::class.java)
     }
 
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
@@ -28,7 +28,7 @@ class EarthRetrofitImpl {
         return httpClient.build()
     }
 
-    inner class EarthInterceptor : Interceptor {
+    inner class MarsInterceptor : Interceptor {
 
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {

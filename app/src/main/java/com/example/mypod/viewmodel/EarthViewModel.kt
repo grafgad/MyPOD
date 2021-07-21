@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mypod.BuildConfig
-import com.example.mypod.model.*
+import com.example.mypod.model.earth.EarthData
+import com.example.mypod.model.earth.EarthRetrofitImpl
+import com.example.mypod.model.earth.EarthServerResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

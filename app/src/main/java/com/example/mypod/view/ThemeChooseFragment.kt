@@ -43,7 +43,7 @@ class ThemeChooseFragment : Fragment() {
         activity
             ?.supportFragmentManager
             ?.beginTransaction()
-            ?.replace(R.id.container, PictureOfTheDayFragment())
+            ?.replace(R.id.container, PODFragment())
             ?.addToBackStack(null)
             ?.commit()
     }

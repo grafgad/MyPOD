@@ -1,4 +1,4 @@
-package com.example.mypod.model
+package com.example.mypod.model.POD
 
 import retrofit2.Call
 import retrofit2.http.GET

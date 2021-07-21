@@ -1,4 +1,4 @@
-package com.example.mypod.model
+package com.example.mypod.model.earth
 
 sealed class EarthData {
         data class Success(val serverResponseData: EarthServerResponseData) : EarthData()

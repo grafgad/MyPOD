@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
-import com.example.mypod.model.PictureOfTheDayData
-import com.example.mypod.viewmodel.PictureOfTheDayViewModel
+import com.example.mypod.model.POD.PictureOfTheDayData
+import com.example.mypod.viewmodel.PODViewModel
 import com.example.mypod.R
 import com.example.mypod.api.ApiActivity
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -21,20 +21,12 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 
 
-class PictureOfTheDayFragment : Fragment() {
-
-//    private lateinit var someData: PODServerResponseData
+class PODFragment : Fragment() {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
-    private val viewModel: PictureOfTheDayViewModel by lazy {
-        ViewModelProviders.of(this).get(PictureOfTheDayViewModel::class.java)
+    private val viewModel: PODViewModel by lazy {
+        ViewModelProviders.of(this).get(PODViewModel::class.java)
     }
-
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        viewModel.getData()
-//            .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> {renderData(it)})
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -93,7 +85,7 @@ class PictureOfTheDayFragment : Fragment() {
                 } else {
                     //showSuccess()
                     image_view.load(url) {
-                        lifecycle(this@PictureOfTheDayFragment)
+                        lifecycle(this@PODFragment)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
@@ -146,7 +138,7 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = PictureOfTheDayFragment()
+        fun newInstance() = PODFragment()
         private var isMain = true
     }
 
