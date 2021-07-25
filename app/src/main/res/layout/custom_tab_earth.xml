@@ -11,11 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_earth"
-        android:drawablePadding="10dp"
-        android:gravity="center_vertical"
-        android:text="Earth"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
+        style="@style/custom_tab_style"
+        android:text="@string/earth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

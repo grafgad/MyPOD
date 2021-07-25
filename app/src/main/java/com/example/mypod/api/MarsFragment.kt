@@ -40,7 +40,7 @@ class MarsFragment : Fragment() {
 
             is MarsData.Success -> {
                 val serverResponseData = data.serverResponseData
-                val url = serverResponseData.image
+                val url = serverResponseData.img_src
                 if (url.isNullOrEmpty()) {
                     //showError("Сообщение, что ссылка пустая")
                     toast("Link is empty")

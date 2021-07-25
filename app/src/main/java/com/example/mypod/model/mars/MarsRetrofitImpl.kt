@@ -10,7 +10,7 @@ import java.io.IOException
 
 class MarsRetrofitImpl {
 
-    private val baseUrl = "https://api.nasa.gov/"
+    private val baseUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos/"
 
     fun getMarsRetrofitImpl(): MarsAPI {
         val marsRetrofit = Retrofit.Builder()
