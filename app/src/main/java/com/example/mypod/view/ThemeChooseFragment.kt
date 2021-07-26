@@ -1,5 +1,7 @@
 package com.example.mypod.view
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +10,14 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.ViewAnimator
 import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat.animate
 import androidx.fragment.app.Fragment
 import com.example.mypod.R
 import kotlinx.android.synthetic.main.fragment_theme_choose.*
+import kotlinx.coroutines.android.awaitFrame
+import kotlinx.coroutines.delay
 
 class ThemeChooseFragment : Fragment() {
 
@@ -40,7 +46,16 @@ class ThemeChooseFragment : Fragment() {
             getMainFragment(R.style.AppTheme)
         }
 
+        ObjectAnimator.ofFloat(choose_theme_text, "translationY", -100f).apply {
+
+            duration = 3000
+            start() }
+
+        change_visibility.animate().x(150f).y(300f)
+
         change_visibility.setOnClickListener{
+            animate(change_visibility).x(-40f)
+
             if (group_visibility.visibility != GONE) {
                 group_visibility.visibility = GONE
                 Toast.makeText(context, "button is clicked", Toast.LENGTH_SHORT).show()
@@ -51,10 +66,35 @@ class ThemeChooseFragment : Fragment() {
             }
         }
 
+        circularButton.setOnClickListener {
+            animate(it).rotation(180f)
+            Thread.sleep(500)
+            activity
+                ?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(R.id.container, PODFragment())
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
         show_barrier.setOnClickListener {
             show_barrier.insetBottom = 50
             show_barrier.text = getString(R.string.button_becomes_longer)
         }
+
+        myFAB.setOnClickListener {
+            ValueAnimator.ofFloat(0f,180f).apply {
+                duration = 1500
+                addUpdateListener { animation ->
+                    mars_theme_button.rotation = animation.animatedValue as Float
+                    show_barrier.translationX = animation.animatedValue as Float
+                }
+                repeatCount = 3
+            }
+                .start()
+        }
+
+
 
     }
 
@@ -64,8 +104,7 @@ class ThemeChooseFragment : Fragment() {
         activity
             ?.supportFragmentManager
             ?.beginTransaction()
-            ?.replace(R.id.container, PODFragment())
-            ?.addToBackStack(null)
+            ?.replace(R.id.container, ThemeChooseFragment())
             ?.commit()
     }
 

@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            app:layoutDescription="@xml/motion_scene">
+            app:layoutDescription="@xml/motion_scene" >
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/wiki_button"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/input_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/input_layout"
@@ -44,11 +44,10 @@
                 app:endIconDrawable="@drawable/ic_wikipedia"
                 app:endIconMode="custom"
                 app:helperText="@string/wiki_helper_text"
-                app:layout_constraintBottom_toTopOf="@+id/chip_group"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.526"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintBottom_toTopOf="@+id/chip_group"
+                app:layout_constraintStart_toEndOf="parent"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_edit_text"
@@ -62,10 +61,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:foregroundGravity="center"
-                app:layout_constraintBottom_toTopOf="@+id/image_view"
+                app:layout_constraintBottom_toTopOf="@id/image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout">
+                app:layout_constraintTop_toBottomOf="@id/wiki_button">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/beforeYesterday"
@@ -100,7 +99,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/chip_group"
                 app:srcCompat="@drawable/ic_no_photo_vector" />
         </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
     </androidx.core.widget.NestedScrollView>
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
 
     <include layout="@layout/bottom_sheet_layout" />
 
@@ -129,3 +134,4 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
