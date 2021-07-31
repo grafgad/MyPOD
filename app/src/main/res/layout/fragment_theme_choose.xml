@@ -4,7 +4,8 @@
     android:id="@+id/theme_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:background="@drawable/earth">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/change_visibility"
@@ -119,6 +120,15 @@
         app:layout_constraintCircleRadius="100dp"
         android:text="@string/circular_button_text"/>
 
+    <Button
+        android:id="@+id/enlargeScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintCircle="@id/myFAB"
+        app:layout_constraintCircleAngle="310"
+        app:layout_constraintCircleRadius="100dp"
+        android:text="@string/enlargeScreen_button_text"/>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/myFAB"
@@ -128,5 +138,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="15dp"
         app:srcCompat="@drawable/ic_plus_fab" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

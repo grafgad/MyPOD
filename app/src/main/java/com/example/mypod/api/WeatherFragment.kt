@@ -31,47 +31,47 @@ class WeatherFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_weather, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getWeatherData()
-            .observe(viewLifecycleOwner, {renderData(it)})
-
-    }
-    private fun renderData(data: WeatherData) {
-        when (data) {
-
-            is WeatherData.Success -> {
-                val serverResponseData = data.serverResponseData
-                val url = serverResponseData.image
-                if (url.isNullOrEmpty()) {
-                    //showError("Сообщение, что ссылка пустая")
-                    toast("Link is empty")
-                } else {
-                    //showSuccess()
-                    image_view_weather.load(url) {
-                        lifecycle(this@WeatherFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
-                    }
-                }
-            }
-            is WeatherData.Loading -> {
-                //showLoading()
-            }
-            is WeatherData.Error -> {
-                //showError(data.error.message)
-                toast(data.error.message)
-            }
-        }
-    }
-
-    private fun Fragment.toast(string: String?) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM, 0, 250)
-            show()
-            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        viewModel.getWeatherData()
+//            .observe(viewLifecycleOwner, {renderData(it)})
+//
+//    }
+//    private fun renderData(data: WeatherData) {
+//        when (data) {
+//
+//            is WeatherData.Success -> {
+//                val serverResponseData = data.serverResponseData
+//                val url = serverResponseData.image
+//                if (url.isNullOrEmpty()) {
+//                    //showError("Сообщение, что ссылка пустая")
+//                    toast("Link is empty")
+//                } else {
+//                    //showSuccess()
+//                    image_view_weather.load(url) {
+//                        lifecycle(this@WeatherFragment)
+//                        error(R.drawable.ic_load_error_vector)
+//                        placeholder(R.drawable.ic_no_photo_vector)
+//                    }
+//                }
+//            }
+//            is WeatherData.Loading -> {
+//                //showLoading()
+//            }
+//            is WeatherData.Error -> {
+//                //showError(data.error.message)
+//                toast(data.error.message)
+//            }
+//        }
+//    }
+//
+//    private fun Fragment.toast(string: String?) {
+//        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
+//            setGravity(Gravity.BOTTOM, 0, 250)
+//            show()
+//            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
+//        }
+//    }
 
 
 

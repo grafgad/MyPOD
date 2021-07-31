@@ -26,48 +26,48 @@ class MarsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_earth, container, false)
+        return inflater.inflate(R.layout.fragment_mars, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getMarsData()
-            .observe(viewLifecycleOwner, {renderData(it)})
-
-    }
-    private fun renderData(data: MarsData) {
-        when (data) {
-
-            is MarsData.Success -> {
-                val serverResponseData = data.serverResponseData
-                val url = serverResponseData.img_src
-                if (url.isNullOrEmpty()) {
-                    //showError("Сообщение, что ссылка пустая")
-                    toast("Link is empty")
-                } else {
-                    //showSuccess()
-                    image_view_mars.load(url) {
-                        lifecycle(this@MarsFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
-                    }
-                }
-            }
-            is MarsData.Loading -> {
-                //showLoading()
-            }
-            is MarsData.Error -> {
-                //showError(data.error.message)
-                toast(data.error.message)
-            }
-        }
-    }
-
-    private fun Fragment.toast(string: String?) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM, 0, 250)
-            show()
-            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        viewModel.getMarsData()
+//            .observe(viewLifecycleOwner, {renderData(it)})
+//
+//    }
+//    private fun renderData(data: MarsData) {
+//        when (data) {
+//
+//            is MarsData.Success -> {
+//                val serverResponseData = data.serverResponseData
+//                val url = serverResponseData.img_src
+//                if (url.isNullOrEmpty()) {
+//                    //showError("Сообщение, что ссылка пустая")
+//                    toast("Link is empty")
+//                } else {
+//                    //showSuccess()
+//                    image_view_mars.load(url) {
+//                        lifecycle(this@MarsFragment)
+//                        error(R.drawable.ic_load_error_vector)
+//                        placeholder(R.drawable.ic_no_photo_vector)
+//                    }
+//                }
+//            }
+//            is MarsData.Loading -> {
+//                //showLoading()
+//            }
+//            is MarsData.Error -> {
+//                //showError(data.error.message)
+//                toast(data.error.message)
+//            }
+//        }
+//    }
+//
+//    private fun Fragment.toast(string: String?) {
+//        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
+//            setGravity(Gravity.BOTTOM, 0, 250)
+//            show()
+//            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
+//        }
+//    }
 }

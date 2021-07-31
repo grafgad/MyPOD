@@ -3,7 +3,12 @@ package com.example.mypod.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.ChangeImageTransform
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.*
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -14,14 +19,20 @@ import com.example.mypod.model.POD.PictureOfTheDayData
 import com.example.mypod.viewmodel.PODViewModel
 import com.example.mypod.R
 import com.example.mypod.api.ApiActivity
+import com.example.mypod.api.ApiBottomActivity
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+import kotlinx.android.synthetic.main.fragment_animation.*
+import kotlinx.android.synthetic.main.fragment_main.image_view
+import kotlinx.android.synthetic.main.main_activity.*
 
 
 class PODFragment : Fragment() {
+
+    private var isExpanded = false
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PODViewModel by lazy {
@@ -49,6 +60,23 @@ class PODFragment : Fragment() {
         setBottomAppBar(view)
 
         today.setOnClickListener {toast("нажалось")}
+
+        image_view.setOnClickListener {
+            isExpanded = !isExpanded
+            androidx.transition.TransitionManager.beginDelayedTransition(
+                main_fragment_POD, androidx.transition.TransitionSet()
+                    .addTransition(androidx.transition.ChangeBounds())
+                    .addTransition(androidx.transition.ChangeImageTransform())
+            )
+
+            val params: ViewGroup.LayoutParams = image_view.layoutParams
+            params.height =
+                if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+            image_view.layoutParams = params
+            image_view.scaleType =
+                if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -59,7 +87,7 @@ class PODFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_api -> activity?.let {startActivity(Intent(it,ApiActivity::class.java))}
-            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_fav -> activity?.let { startActivity(Intent(it, ApiBottomActivity::class.java)) }
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, SettingsFragment())?.addToBackStack(null)?.commit()
             android.R.id.home -> {
                 activity?.let {

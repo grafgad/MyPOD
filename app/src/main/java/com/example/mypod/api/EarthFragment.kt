@@ -31,46 +31,46 @@ class EarthFragment : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getEarthData()
-            .observe(viewLifecycleOwner, {renderData(it)})
-
-    }
-    private fun renderData(data: EarthData) {
-        when (data) {
-
-            is EarthData.Success -> {
-                val serverResponseData = data.serverResponseData
-                val url = serverResponseData.image
-                if (url.isNullOrEmpty()) {
-                    //showError("Сообщение, что ссылка пустая")
-                    toast("Link is empty")
-                } else {
-                    //showSuccess()
-                    image_view_earth.load(url) {
-                        lifecycle(this@EarthFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
-                    }
-                }
-            }
-            is EarthData.Loading -> {
-                //showLoading()
-            }
-            is EarthData.Error -> {
-                //showError(data.error.message)
-                toast(data.error.message)
-            }
-        }
-    }
-
-    private fun Fragment.toast(string: String?) {
-        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
-            setGravity(Gravity.BOTTOM, 0, 250)
-            show()
-            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
-        }
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        viewModel.getEarthData()
+//            .observe(viewLifecycleOwner, {renderData(it)})
+//
+//    }
+//    private fun renderData(data: EarthData) {
+//        when (data) {
+//
+//            is EarthData.Success -> {
+//                val serverResponseData = data.serverResponseData
+//                val url = serverResponseData.image
+//                if (url.isNullOrEmpty()) {
+//                    //showError("Сообщение, что ссылка пустая")
+//                    toast("Link is empty")
+//                } else {
+//                    //showSuccess()
+//                    image_view_earth.load(url) {
+//                        lifecycle(this@EarthFragment)
+//                        error(R.drawable.ic_load_error_vector)
+//                        placeholder(R.drawable.ic_no_photo_vector)
+//                    }
+//                }
+//            }
+//            is EarthData.Loading -> {
+//                //showLoading()
+//            }
+//            is EarthData.Error -> {
+//                //showError(data.error.message)
+//                toast(data.error.message)
+//            }
+//        }
+//    }
+//
+//    private fun Fragment.toast(string: String?) {
+//        Toast.makeText(context, string, Toast.LENGTH_SHORT).apply {
+//            setGravity(Gravity.BOTTOM, 0, 250)
+//            show()
+//            Snackbar.make(image_view_earth,"error", Snackbar.LENGTH_SHORT).show()
+//        }
+//    }
 
 }
