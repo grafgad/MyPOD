@@ -90,22 +90,22 @@ class ThemeChooseFragment : Fragment() {
         }
 
         enlargeScreen.setOnClickListener {
-            animate(it).rotation(270f)
-//            Thread.sleep(1500)
-
-            startActivity(Intent(context, AnimationFragment::class.java))
-        }
+            animate(it).rotation(270f).withEndAction {
+                Thread.sleep(1500)
+                startActivity(Intent(context, AnimationActivity::class.java))
+            }
     }
-
+    }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun getMainFragment(theme: Int) {
         activity?.setTheme(theme)
-        activity
-            ?.supportFragmentManager
-            ?.beginTransaction()
-            ?.replace(R.id.container, ThemeChooseFragment())
-            ?.commit()
+        activity?.startActivity(Intent(context,MainActivity::class.java).putExtra("1",theme))
+//        activity
+//            ?.supportFragmentManager
+//            ?.beginTransaction()
+//            ?.replace(R.id.container, ThemeChooseFragment())
+//            ?.commit()
     }
 
     companion object {

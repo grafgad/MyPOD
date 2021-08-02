@@ -12,7 +12,7 @@ import androidx.transition.TransitionSet
 import com.example.mypod.R
 import kotlinx.android.synthetic.main.fragment_animation.*
 
-class AnimationFragment : AppCompatActivity() {
+class AnimationActivity : AppCompatActivity() {
     private var isExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

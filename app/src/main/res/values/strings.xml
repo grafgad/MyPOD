@@ -24,4 +24,6 @@
     <string name="button_becomes_longer">button becomes longer</string>
     <string name="circular_button_text">Open POD</string>
     <string name="enlargeScreen_button_text">Show Enlarge</string>
+    <string name="notice_title_text">Новая заметка</string>
+    <string name="notice_description_text">Содержимое заметки</string>
 </resources>
