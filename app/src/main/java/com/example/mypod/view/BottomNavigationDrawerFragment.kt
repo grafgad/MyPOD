@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.mypod.R
 import com.example.mypod.recycler.RecyclerActivity
-import com.example.mypod.recycler.myrecycler.RecyclerNoticeActivity
+import com.example.mypod.recycler.myrecycler.NoticeRecyclerActivity
 import kotlinx.android.synthetic.main.bottom_navigation_layout.*
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -53,7 +53,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     startActivity(
                         Intent(
                             it,
-                            RecyclerNoticeActivity::class.java
+                            NoticeRecyclerActivity::class.java
                         )
                     )
                 }

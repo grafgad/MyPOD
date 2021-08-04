@@ -35,7 +35,7 @@
 
         <activity android:name=".recycler.RecyclerActivity" />
 
-        <activity android:name=".recycler.myrecycler.RecyclerNoticeActivity" />
+        <activity android:name=".recycler.myrecycler.NoticeRecyclerActivity" />
 
     </application>
 

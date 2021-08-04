@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_recycler.*
 import kotlinx.android.synthetic.main.activity_recycler_item_earth.view.*
 import kotlinx.android.synthetic.main.activity_recycler_item_mars.view.*
 
-
 class RecyclerActivity : AppCompatActivity() {
 
     private var isNewList = false
@@ -27,6 +26,7 @@ class RecyclerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler)
+
         val data = arrayListOf(
             Pair(Data(1,"Mars", ""), false)
         )
@@ -82,9 +82,6 @@ class RecyclerActivity : AppCompatActivity() {
         }
     }
 
-
-
-
     class RecyclerActivityAdapter(
         private var onListItemClickListener: OnListItemClickListener,
         private var data: MutableList<Pair<Data, Boolean>>,
@@ -92,7 +89,10 @@ class RecyclerActivity : AppCompatActivity() {
     ) :
         RecyclerView.Adapter<BaseViewHolder>(), ItemTouchHelperAdapter {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        override fun onCreateViewHolder(
+            parent: ViewGroup,
+            viewType: Int
+        ): BaseViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             return when (viewType) {
                 TYPE_EARTH -> EarthViewHolder(
@@ -125,6 +125,7 @@ class RecyclerActivity : AppCompatActivity() {
 //            }
 //        }
 
+
         override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
             holder.bind(data[position])
         }
@@ -146,7 +147,6 @@ class RecyclerActivity : AppCompatActivity() {
                     holder.itemView.marsTextView.text = newData.first.someText
                 }
             }
-
         }
 
         override fun getItemCount(): Int {
@@ -185,7 +185,7 @@ class RecyclerActivity : AppCompatActivity() {
             notifyDataSetChanged()
         }
 
-        private fun generateItem(): Pair<Data, Boolean> = Pair(Data(1,"Mars", ""),false)
+        private fun generateItem(): Pair<Data, Boolean> = Pair(Data(1,"My new notice", ""),false)
 
         inner class DiffUtilCallback(
             private var oldItems: List<Pair<Data, Boolean>>,
