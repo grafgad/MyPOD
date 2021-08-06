@@ -22,7 +22,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_animation.*
-import kotlinx.android.synthetic.main.fragment_main.image_view
+import kotlinx.android.synthetic.main.fragment_main.splash_image_view
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
 
@@ -83,7 +83,7 @@ class PODFragment : Fragment() {
             activity?.recreate()
         }
 
-        image_view.setOnClickListener {
+        splash_image_view.setOnClickListener {
             isExpanded = !isExpanded
             androidx.transition.TransitionManager.beginDelayedTransition(
                 main_fragment_POD, androidx.transition.TransitionSet()
@@ -91,11 +91,11 @@ class PODFragment : Fragment() {
                     .addTransition(androidx.transition.ChangeImageTransform())
             )
 
-            val params: ViewGroup.LayoutParams = image_view.layoutParams
+            val params: ViewGroup.LayoutParams = splash_image_view.layoutParams
             params.height =
                 if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
-            image_view.layoutParams = params
-            image_view.scaleType =
+            splash_image_view.layoutParams = params
+            splash_image_view.scaleType =
                 if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
         }
 
@@ -133,7 +133,7 @@ class PODFragment : Fragment() {
                     toast("Link is empty")
                 } else {
                     //showSuccess()
-                    image_view.load(url) {
+                    splash_image_view.load(url) {
                         lifecycle(this@PODFragment)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
