@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
@@ -22,17 +23,17 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_animation.*
-import kotlinx.android.synthetic.main.fragment_main.splash_image_view
+import kotlinx.android.synthetic.main.fragment_main.image_view
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
+import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_podbutton.*
 
 
-class PODFragment : Fragment() {
+class PODFragment : Fragment(R.layout.fragment_main_start) {
 
     private var isExpanded = false
-
-    var datef = LocalDate.now().toString()
-
+    var datef = "--"
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PODViewModel by lazy {
@@ -40,15 +41,14 @@ class PODFragment : Fragment() {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main_start, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        return inflater.inflate(R.layout.fragment_main_start, container, false)
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        viewModel.getDate()
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData()
             .observe(viewLifecycleOwner, {renderData(it)})
@@ -63,27 +63,31 @@ class PODFragment : Fragment() {
         today.setOnClickListener {
             datef = LocalDate.now().toString()
             println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//            PODButtonFragment().dateButton = datef
 
-//            activity?.recreate()
+//            request_date.text = datef
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
+
         }
 
         yesterday.setOnClickListener {
             datef = LocalDate.now().minusDays(1).toString()
 //            viewModel.getDate()
             println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-//            println(viewModel.datevm)
-            activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, PODFragment())?.addToBackStack(null)?.commit()
+//            request_date.text = datef
+
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
         }
 
         beforeYesterday.setOnClickListener {
             datef = LocalDate.now().minusDays(2).toString()
-//            viewModel.getDate()
             println(datef + " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-//            println(PODViewModel().datevm)
-            activity?.recreate()
+//            PODButtonFragment().dateButton = datef
+//            request_date.text = datef
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
         }
 
-        splash_image_view.setOnClickListener {
+        image_view.setOnClickListener {
             isExpanded = !isExpanded
             androidx.transition.TransitionManager.beginDelayedTransition(
                 main_fragment_POD, androidx.transition.TransitionSet()
@@ -91,11 +95,11 @@ class PODFragment : Fragment() {
                     .addTransition(androidx.transition.ChangeImageTransform())
             )
 
-            val params: ViewGroup.LayoutParams = splash_image_view.layoutParams
+            val params: ViewGroup.LayoutParams = image_view.layoutParams
             params.height =
                 if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
-            splash_image_view.layoutParams = params
-            splash_image_view.scaleType =
+            image_view.layoutParams = params
+            image_view.scaleType =
                 if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
         }
 
@@ -133,7 +137,7 @@ class PODFragment : Fragment() {
                     toast("Link is empty")
                 } else {
                     //showSuccess()
-                    splash_image_view.load(url) {
+                    image_view.load(url) {
                         lifecycle(this@PODFragment)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)

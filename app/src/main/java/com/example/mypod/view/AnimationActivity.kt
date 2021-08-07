@@ -17,7 +17,7 @@ class AnimationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_animation)
-        splash_image_view.setOnClickListener {
+        image_view.setOnClickListener {
             isExpanded = !isExpanded
             TransitionManager.beginDelayedTransition(
                 animationContainer, TransitionSet()
@@ -25,11 +25,11 @@ class AnimationActivity : AppCompatActivity() {
                     .addTransition(ChangeImageTransform())
             )
 
-            val params: ViewGroup.LayoutParams = splash_image_view.layoutParams
+            val params: ViewGroup.LayoutParams = image_view.layoutParams
             params.height =
                 if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
-            splash_image_view.layoutParams = params
-            splash_image_view.scaleType =
+            image_view.layoutParams = params
+            image_view.scaleType =
                 if (isExpanded) ImageView.ScaleType.CENTER_CROP else ImageView.ScaleType.FIT_CENTER
         }
     }

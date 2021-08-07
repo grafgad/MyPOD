@@ -10,14 +10,14 @@ import com.example.mypod.R
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_settings.*
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_settings, container, false)
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

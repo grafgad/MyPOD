@@ -4,36 +4,43 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mypod.BuildConfig
-import com.example.mypod.model.POD.PODRetrofitImpl
+import com.example.mypod.model.POD.PODButtonData
+import com.example.mypod.model.POD.PODButtonRetrofitImpl
 import com.example.mypod.model.POD.PODServerResponseData
 import com.example.mypod.model.POD.PictureOfTheDayData
+import com.example.mypod.view.PODButtonFragment
 import com.example.mypod.view.PODFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PODViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
-    private val retrofitImpl: PODRetrofitImpl = PODRetrofitImpl()
+class PODButtonViewModel(
+    private val liveDataForViewToObserve: MutableLiveData<PODButtonData> = MutableLiveData(),
+    private val retrofitImpl: PODButtonRetrofitImpl = PODButtonRetrofitImpl()
 ) :
     ViewModel() {
+    var date: String = PODButtonFragment().dateButton
 
-    fun getData(): LiveData<PictureOfTheDayData> {
+    fun getData(): LiveData<PODButtonData> {
         sendServerRequest()
         return liveDataForViewToObserve
     }
 
+//    fun getDate(): LiveData<PODButtonData> {
+//        sendServerRequest()
+//        var datevm = PODFragment().datef
+//        return datevm
+//    }
 
-
-//    lateinit var datevm : String
+    //    lateinit var datevm : String
     private fun sendServerRequest() {
 
-        liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
+        liveDataForViewToObserve.value = PODButtonData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(object :
+            retrofitImpl.getRetrofitImpl().getPODButton(apiKey, date).enqueue(object :
                 Callback<PODServerResponseData> {
                 override fun onResponse(
                     call: Call<PODServerResponseData>,
@@ -41,21 +48,21 @@ class PODViewModel(
                 ) {
                     if (response.isSuccessful && response.body() != null) {
                         liveDataForViewToObserve.value =
-                            PictureOfTheDayData.Success(response.body()!!)
+                            PODButtonData.Success(response.body()!!)
                     } else {
                         val message = response.message()
                         if (message.isNullOrEmpty()) {
                             liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable("Unidentified error"))
+                                PODButtonData.Error(Throwable("Unidentified error"))
                         } else {
                             liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable(message))
+                                PODButtonData.Error(Throwable(message))
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                    liveDataForViewToObserve.value = PictureOfTheDayData.Error(t)
+                    liveDataForViewToObserve.value = PODButtonData.Error(t)
                 }
             })
         }

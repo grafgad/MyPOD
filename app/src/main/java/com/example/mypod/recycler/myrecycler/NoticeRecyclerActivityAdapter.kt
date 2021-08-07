@@ -61,8 +61,8 @@ class NoticeRecyclerActivityAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when {
-            position == 0 -> TYPE_HEADER
+        return when (position) {
+            0 -> TYPE_HEADER
             else -> TYPE_NOTICE
         }
     }
@@ -149,7 +149,7 @@ class NoticeRecyclerActivityAdapter(
             itemView.noticeTitle.setOnClickListener { toggleText() }
 //            itemView.dragHandleImageView.setOnTouchListener { _, event ->
 //                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN) {
-//                    dragListener?.onStartDrag(this)
+//                    dragListener.onStartDrag(this)
 //                }
 //                false
 //            }

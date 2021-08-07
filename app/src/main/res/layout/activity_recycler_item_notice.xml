@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/noticeImage"
@@ -31,8 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:padding="15dp"
-        android:text="@string/notice_description_text"
-        android:textColor="#E60B0A0A"
+        android:hint="@string/notice_description_text"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +40,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#000"
+        android:layout_height="2px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noticeDescription" />
 
@@ -96,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:tint="@color/cardview_shadow_start_color"
+        android:tint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/noticeTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/noticeTitle"

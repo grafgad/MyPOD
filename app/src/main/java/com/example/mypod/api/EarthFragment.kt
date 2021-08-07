@@ -17,18 +17,18 @@ import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_earth.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class EarthFragment : Fragment() {
+class EarthFragment : Fragment(R.layout.fragment_earth) {
 
     private val viewModel: EarthViewModel by lazy {
         ViewModelProviders.of(this).get(EarthViewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_earth, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_earth, container, false)
+//    }
 
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

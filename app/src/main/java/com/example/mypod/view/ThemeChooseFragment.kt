@@ -23,14 +23,14 @@ import androidx.fragment.app.Fragment
 import com.example.mypod.R
 import kotlinx.android.synthetic.main.fragment_theme_choose.*
 
-class ThemeChooseFragment : Fragment() {
+class ThemeChooseFragment : Fragment(R.layout.fragment_theme_choose) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_theme_choose, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        return inflater.inflate(R.layout.fragment_theme_choose, container, false)
+//    }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

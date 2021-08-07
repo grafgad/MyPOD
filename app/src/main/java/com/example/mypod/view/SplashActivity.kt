@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mypod.R
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -19,18 +18,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-//        splash_image_view.animate().scaleY(-1f)
-//            .setInterpolator(AccelerateDecelerateInterpolator()).duration =
-//            1000
-//
-//        handler.postDelayed({
-//            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-//            finish()
-//        }, 3000)
-//    }
-
-
-        splash_image_view.animate().rotationBy(750f)
+        image_view.animate().rotationBy(750f)
             .setInterpolator(AccelerateDecelerateInterpolator()).setDuration(3000)
             .setListener(object : Animator.AnimatorListener {
 
@@ -48,12 +36,6 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-
-//                handler.postDelayed({
-//            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-//            finish()
-//        }, 3000)
-//    }
 
     override fun onDestroy() {
         handler.removeCallbacksAndMessages(null)
