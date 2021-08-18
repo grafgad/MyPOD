@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
@@ -25,14 +26,14 @@ import kotlinx.android.synthetic.main.fragment_animation.*
 import kotlinx.android.synthetic.main.fragment_main.image_view
 import kotlinx.android.synthetic.main.activity_main.*
 import java.time.LocalDate
+import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_podbutton.*
 
 
-class PODFragment : Fragment() {
+class PODFragment : Fragment(R.layout.fragment_main_start) {
 
     private var isExpanded = false
-
-    var datef = LocalDate.now().toString()
-
+    var datef = "--"
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PODViewModel by lazy {
@@ -40,15 +41,14 @@ class PODFragment : Fragment() {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_main_start, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        return inflater.inflate(R.layout.fragment_main_start, container, false)
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        viewModel.getDate()
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData()
             .observe(viewLifecycleOwner, {renderData(it)})
@@ -63,24 +63,28 @@ class PODFragment : Fragment() {
         today.setOnClickListener {
             datef = LocalDate.now().toString()
             println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//            PODButtonFragment().dateButton = datef
 
-//            activity?.recreate()
+//            request_date.text = datef
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
+
         }
 
         yesterday.setOnClickListener {
             datef = LocalDate.now().minusDays(1).toString()
 //            viewModel.getDate()
             println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-//            println(viewModel.datevm)
-            activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, PODFragment())?.addToBackStack(null)?.commit()
+//            request_date.text = datef
+
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
         }
 
         beforeYesterday.setOnClickListener {
             datef = LocalDate.now().minusDays(2).toString()
-//            viewModel.getDate()
             println(datef + " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-//            println(PODViewModel().datevm)
-            activity?.recreate()
+//            PODButtonFragment().dateButton = datef
+//            request_date.text = datef
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.container, PODButtonFragment())?.addToBackStack(null)?.commit()
         }
 
         image_view.setOnClickListener {

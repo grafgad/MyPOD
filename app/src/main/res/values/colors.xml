@@ -7,10 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pink">#E9E34E7D</color>
 
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorPrimary">#3f50b5</color>
+    <color name="colorPrimaryDark">#002884</color>
+    <color name="colorAccent">#757ce8</color>
     <color name="color_gray">#66000000</color>
 
 
@@ -28,6 +30,15 @@
     <color name="orange">#FF7043</color>
 
     <color name="colorAccent40Alfa">#661D3971</color>
+
+    <color name="marsPrimaryColor">#d32f2f</color>
+    <color name="marsPrimaryLightColor">#ff6659</color>
+    <color name="marsPrimaryDarkColor">#9a0007</color>
+    <color name="marsSecondaryColor">#9c27b0</color>
+    <color name="marsSecondaryLightColor">#d05ce3</color>
+    <color name="marsSecondaryDarkColor">#6a0080</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
 
 </resources>

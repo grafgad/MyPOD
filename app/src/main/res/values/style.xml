@@ -7,16 +7,25 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/gray</item>
+        <item name="background">@color/white</item>
     </style>
 
-    <style name="MarsTheme" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="android:textColor">@color/red</item>
+    <style name="AppTheme.Splash">
+        <item name="android:windowBackground">
+            @drawable/splash_background_drawable</item>
+    </style>
+
+    <style name="MarsTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/marsPrimaryColor</item>
+        <item name="colorPrimaryDark">@color/marsPrimaryDarkColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/primary_text</item>
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
         <item name="chipBackgroundColor">@color/orange</item>
         <!--        <item name="boxBackgroundColor">@color/orange</item>-->
     </style>
 
-    <style name="MoonTHeme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="MoonTHeme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textColor">@color/gray</item>
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">8dp</item>

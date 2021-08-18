@@ -1,15 +1,8 @@
 package com.example.mypod.recycler.myrecycler
 
-import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MotionEventCompat
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mypod.R
@@ -35,13 +28,14 @@ class NoticeRecyclerActivity : AppCompatActivity() {
         adapter = NoticeRecyclerActivityAdapter(
             object : NoticeRecyclerActivityAdapter.OnListItemClickListener {
                 override fun onItemClick(data: Data) {
-                    Toast.makeText(this@NoticeRecyclerActivity, data.someTitle, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@NoticeRecyclerActivity, data.someTitle, Toast.LENGTH_SHORT)
+                        .show()
                 }
             },
             data,
             object : NoticeRecyclerActivityAdapter.OnStartDragListener {
                 override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
-                    itemTouchHelper?.startDrag(viewHolder)
+                    itemTouchHelper.startDrag(viewHolder)
                 }
             }
         )
@@ -50,7 +44,7 @@ class NoticeRecyclerActivity : AppCompatActivity() {
         recyclerActivityFAB.setOnClickListener { adapter.appendItem() }
         itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
         recyclerActivityFAB.setOnClickListener { changeAdapterData() }
-//        changeAdapterData()
+        changeAdapterData()
     }
 
     private fun changeAdapterData() {
@@ -93,7 +87,6 @@ class NoticeRecyclerActivity : AppCompatActivity() {
 
         fun onItemClear()
     }
-
 
 
     class ItemTouchHelperCallback(private val adapter: NoticeRecyclerActivityAdapter) :

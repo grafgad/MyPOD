@@ -35,7 +35,7 @@
         android:id="@+id/barrierShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Barrier works"
+        android:text="@string/barrier_works"
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@id/barrier"
         app:layout_constraintTop_toBottomOf="@id/change_visibility" />
@@ -90,15 +90,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/moon_theme_button"
         app:layout_constraintTop_toBottomOf="@+id/choose_theme_text" />
-
-<!--    <androidx.constraintlayout.widget.Barrier-->
-<!--        android:id="@+id/barrier2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/moon_theme_button"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/default_theme_button"-->
-<!--        app:barrierDirection="top"-->
-<!--        app:constraint_referenced_ids="default_theme_button"/>-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/default_theme_button"

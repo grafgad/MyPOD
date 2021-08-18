@@ -3,8 +3,14 @@ package com.example.mypod.view
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -17,14 +23,14 @@ import androidx.fragment.app.Fragment
 import com.example.mypod.R
 import kotlinx.android.synthetic.main.fragment_theme_choose.*
 
-class ThemeChooseFragment : Fragment() {
+class ThemeChooseFragment : Fragment(R.layout.fragment_theme_choose) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_theme_choose, container, false)
-    }
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        return inflater.inflate(R.layout.fragment_theme_choose, container, false)
+//    }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,10 +49,16 @@ class ThemeChooseFragment : Fragment() {
             getMainFragment(R.style.AppTheme)
         }
 
+
         ObjectAnimator.ofFloat(choose_theme_text, "translationY", -100f).apply {
             duration = 3000
             start()
         }
+        val text = "Choose  <ul>theme</ul>"
+        choose_theme_text.text = Html.fromHtml(text)
+
+
+
 
         change_visibility.animate().x(150f).y(300f)
 
@@ -75,6 +87,20 @@ class ThemeChooseFragment : Fragment() {
         show_barrier.setOnClickListener {
             show_barrier.insetBottom = 50
             show_barrier.text = getString(R.string.button_becomes_longer)
+            val spannable = SpannableString("Barrier works")
+            spannable.setSpan(
+                ForegroundColorSpan(Color.GREEN),
+                8, 13,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            barrierShow.text = spannable
+            val spannable2 = SpannableStringBuilder("button becomes longer")
+            spannable2.setSpan(
+                ForegroundColorSpan(Color.BLUE),
+                15, 21,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            show_barrier.text = spannable2
         }
 
         myFAB.setOnClickListener {
@@ -91,16 +117,34 @@ class ThemeChooseFragment : Fragment() {
 
         enlargeScreen.setOnClickListener {
             animate(it).rotation(270f).withEndAction {
-                Thread.sleep(1500)
+                Thread.sleep(500)
                 startActivity(Intent(context, AnimationActivity::class.java))
             }
+        }
     }
+
+    private fun someShow2() {
+
+        someShow1().let { Thread.sleep(100) }
+
     }
+
+
+    private fun someShow1() {
+        val spannable = SpannableString("choose theme")
+        spannable.setSpan(
+            ForegroundColorSpan(Color.GREEN),
+            7, 12,
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        choose_theme_text.text = spannable
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun getMainFragment(theme: Int) {
         activity?.setTheme(theme)
-        activity?.startActivity(Intent(context,MainActivity::class.java).putExtra("1",theme))
+        activity?.startActivity(Intent(context, MainActivity::class.java).putExtra("1", theme))
 //        activity
 //            ?.supportFragmentManager
 //            ?.beginTransaction()
