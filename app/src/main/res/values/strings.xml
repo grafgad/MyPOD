@@ -22,5 +22,6 @@
     <string name="change_visibility">Change Visibility</string>
     <string name="make_barrier">Show barrier</string>
     <string name="button_becomes_longer">button becomes longer</string>
-    <string name="circular_button_text">circular</string>
+    <string name="circular_button_text">Open POD</string>
+    <string name="enlargeScreen_button_text">Show Enlarge</string>
 </resources>

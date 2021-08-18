@@ -13,12 +13,23 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity">
             <intent-filter>
+                android:label="com.example.mypod">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="example" android:host="intent3"/>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity android:name=".api.ApiActivity">
+
+        </activity>
+        <activity android:name=".view.AnimationFragment">
+
+        </activity>
+        <activity android:name=".api.ApiBottomActivity">
 
         </activity>
     </application>
