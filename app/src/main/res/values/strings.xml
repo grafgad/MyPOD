@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">My POD</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="photo_of_the_earth">Photo of the Earth</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
     <string name="favourite">favourite</string>
@@ -15,4 +16,11 @@
     <string name="moon_theme">Moon</string>
     <string name="cosmos_theme">Cosmos</string>
     <string name="default_theme">default_theme</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="weather">Weather</string>
+    <string name="change_visibility">Change Visibility</string>
+    <string name="make_barrier">Show barrier</string>
+    <string name="button_becomes_longer">button becomes longer</string>
+    <string name="circular_button_text">circular</string>
 </resources>

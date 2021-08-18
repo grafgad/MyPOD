@@ -1,4 +1,4 @@
-package com.example.mypod.model
+package com.example.mypod.model.mars
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
@@ -8,17 +8,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class PODRetrofitImpl {
+class MarsRetrofitImpl {
 
-    private val baseUrl = "https://api.nasa.gov/"
+    private val baseUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos/"
 
-    fun getRetrofitImpl(): PictureOfTheDayAPI {
-        val podRetrofit = Retrofit.Builder()
+    fun getMarsRetrofitImpl(): MarsAPI {
+        val marsRetrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .client(createOkHttpClient(PODInterceptor()))
+            .client(createOkHttpClient(MarsInterceptor()))
             .build()
-        return podRetrofit.create(PictureOfTheDayAPI::class.java)
+        return marsRetrofit.create(MarsAPI::class.java)
     }
 
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
@@ -28,7 +28,7 @@ class PODRetrofitImpl {
         return httpClient.build()
     }
 
-    inner class PODInterceptor : Interceptor {
+    inner class MarsInterceptor : Interceptor {
 
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {

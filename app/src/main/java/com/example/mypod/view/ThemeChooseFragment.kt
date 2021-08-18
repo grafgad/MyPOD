@@ -4,7 +4,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.mypod.R
@@ -23,6 +26,7 @@ class ThemeChooseFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         mars_theme_button.setOnClickListener {
             getMainFragment(R.style.MarsTheme)
         }
@@ -35,6 +39,23 @@ class ThemeChooseFragment : Fragment() {
         default_theme_button.setOnClickListener {
             getMainFragment(R.style.AppTheme)
         }
+
+        change_visibility.setOnClickListener{
+            if (group_visibility.visibility != GONE) {
+                group_visibility.visibility = GONE
+                Toast.makeText(context, "button is clicked", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                group_visibility.visibility = VISIBLE
+                Toast.makeText(context, "button is clicked again", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        show_barrier.setOnClickListener {
+            show_barrier.insetBottom = 50
+            show_barrier.text = getString(R.string.button_becomes_longer)
+        }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -43,7 +64,7 @@ class ThemeChooseFragment : Fragment() {
         activity
             ?.supportFragmentManager
             ?.beginTransaction()
-            ?.replace(R.id.container, PictureOfTheDayFragment())
+            ?.replace(R.id.container, PODFragment())
             ?.addToBackStack(null)
             ?.commit()
     }

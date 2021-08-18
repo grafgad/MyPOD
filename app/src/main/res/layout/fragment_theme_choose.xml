@@ -5,8 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/change_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_visibility"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/show_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:text="@string/make_barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/change_visibility" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="show_barrier" />
+
     <TextView
-        android:id="@+id/theme_text"
+        android:id="@+id/barrierShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Barrier works"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/change_visibility" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_visibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="mars_theme_button, moon_theme_button, cosmos_theme_button" />
+
+    <TextView
+        android:id="@+id/choose_theme_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choose_theme"
@@ -23,10 +62,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/mars_theme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintEnd_toStartOf="@+id/moon_theme_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theme_text" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_theme_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/moon_theme_button"
@@ -34,10 +73,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/moon_theme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintEnd_toStartOf="@id/cosmos_theme_button"
         app:layout_constraintStart_toEndOf="@id/mars_theme_button"
-        app:layout_constraintTop_toBottomOf="@+id/theme_text" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_theme_text" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/cosmos_theme_button"
@@ -45,20 +84,48 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/cosmos_theme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/moon_theme_button"
-        app:layout_constraintTop_toBottomOf="@+id/theme_text" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_theme_text" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/moon_theme_button"
+        app:layout_constraintBottom_toTopOf="@id/default_theme_button"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="default_theme_button"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/default_theme_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/default_theme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moon_theme_button" />
+        app:layout_constraintTop_toBottomOf="@+id/barrier2" />
+
+    <Button
+        android:id="@+id/circularButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintCircle="@id/myFAB"
+        app:layout_constraintCircleAngle="280"
+        app:layout_constraintCircleRadius="100dp"
+        android:text="@string/circular_button_text"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/myFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="15dp"
+        app:srcCompat="@drawable/ic_plus_fab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

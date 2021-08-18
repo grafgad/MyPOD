@@ -222,42 +222,45 @@
                     android:id="@+id/raisedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Raised Button"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/unelevatedButton"
+                    app:layout_constraintHorizontal_chainStyle="packed"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/unelevatedButton"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Unelevated Button"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/raisedButton"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/outlinedButton"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Outlined Button"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/raisedButton" />
+                    app:layout_constraintTop_toBottomOf="@id/raisedButton"
+                    app:layout_constraintEnd_toStartOf="@+id/textButton"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/textButton"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Text Button"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/outlinedButton"
                     app:layout_constraintTop_toBottomOf="@id/raisedButton" />
 
@@ -265,31 +268,36 @@
                     android:id="@+id/checkBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Checkbox"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textButton" />
+                    app:layout_constraintTop_toBottomOf="@id/textButton"
+                    app:layout_constraintEnd_toStartOf="@+id/radioButton"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Radio Button"
                     app:layout_constraintStart_toEndOf="@id/checkBox"
-                    app:layout_constraintTop_toBottomOf="@id/textButton" />
+                    app:layout_constraintTop_toBottomOf="@id/textButton"
+                    app:layout_constraintEnd_toStartOf="@id/switchMaterial"
+                    app:layout_constraintHorizontal_weight="2" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/switchMaterial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Switch"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/radioButton"
-                    app:layout_constraintTop_toBottomOf="@id/textButton" />
+                    app:layout_constraintTop_toBottomOf="@id/textButton"
+                    app:layout_constraintHorizontal_weight="1" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/filledBoxTextField"
@@ -310,13 +318,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/outlinedBoxTextField"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="240dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:hint="Outlined Box Text Field"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/filledBoxTextField">
+                    app:layout_constraintTop_toBottomOf="@id/filledBoxTextField"
+                    app:layout_constraintWidth_percent="0.8">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
