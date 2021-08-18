@@ -7,6 +7,7 @@ import com.example.mypod.BuildConfig
 import com.example.mypod.model.POD.PODRetrofitImpl
 import com.example.mypod.model.POD.PODServerResponseData
 import com.example.mypod.model.POD.PictureOfTheDayData
+import com.example.mypod.view.PODFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,13 +23,20 @@ class PODViewModel(
         return liveDataForViewToObserve
     }
 
+    fun getDate(): String {
+        var datevm = PODFragment().datef
+        return datevm
+    }
+
+//    lateinit var datevm : String
     private fun sendServerRequest() {
+        val date = PODFragment().datef
         liveDataForViewToObserve.value = PictureOfTheDayData.Loading(null)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
             PictureOfTheDayData.Error(Throwable("You need API key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(object :
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(object :
                 Callback<PODServerResponseData> {
                 override fun onResponse(
                     call: Call<PODServerResponseData>,

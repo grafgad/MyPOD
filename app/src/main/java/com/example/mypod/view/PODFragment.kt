@@ -3,10 +3,6 @@ package com.example.mypod.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.transition.ChangeBounds
-import android.transition.ChangeImageTransform
-import android.transition.TransitionManager
-import android.transition.TransitionSet
 import android.view.*
 import android.widget.ImageView
 import android.widget.Toast
@@ -27,27 +23,32 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_animation.*
 import kotlinx.android.synthetic.main.fragment_main.image_view
-import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.android.synthetic.main.activity_main.*
+import java.time.LocalDate
 
 
 class PODFragment : Fragment() {
 
     private var isExpanded = false
 
+    var datef = LocalDate.now().toString()
+
+
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel: PODViewModel by lazy {
         ViewModelProviders.of(this).get(PODViewModel::class.java)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         return inflater.inflate(R.layout.fragment_main_start, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        viewModel.getDate()
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData()
             .observe(viewLifecycleOwner, {renderData(it)})
@@ -59,7 +60,28 @@ class PODFragment : Fragment() {
         }
         setBottomAppBar(view)
 
-        today.setOnClickListener {toast("нажалось")}
+        today.setOnClickListener {
+            datef = LocalDate.now().toString()
+            println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+//            activity?.recreate()
+        }
+
+        yesterday.setOnClickListener {
+            datef = LocalDate.now().minusDays(1).toString()
+//            viewModel.getDate()
+            println(datef + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//            println(viewModel.datevm)
+            activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, PODFragment())?.addToBackStack(null)?.commit()
+        }
+
+        beforeYesterday.setOnClickListener {
+            datef = LocalDate.now().minusDays(2).toString()
+//            viewModel.getDate()
+            println(datef + " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+//            println(PODViewModel().datevm)
+            activity?.recreate()
+        }
 
         image_view.setOnClickListener {
             isExpanded = !isExpanded
@@ -100,7 +122,6 @@ class PODFragment : Fragment() {
 
     private fun renderData(data: PictureOfTheDayData) {
         when (data) {
-
             is PictureOfTheDayData.Success -> {
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.url

@@ -9,5 +9,14 @@
             android:id="@+id/navigation_two"
             android:icon="@drawable/ic_send"
             android:title="На экран 2" />
+        <item
+            android:id="@+id/recycler"
+            android:icon="@drawable/ic_wikipedia"
+            android:title="Открыть список"/>
+
+        <item
+            android:id="@+id/noticeRecycler"
+            android:icon="@drawable/ic_plus_black"
+            android:title="Открыть заметки"/>
     </group>
 </menu>
