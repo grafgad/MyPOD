@@ -1,3 +1,3 @@
 # MyPOD
 
-Учебный проект, изучали Material design.
+Training project to study Material design using NASA Api.
